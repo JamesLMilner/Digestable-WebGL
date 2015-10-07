@@ -1,7 +1,23 @@
 # Digestable WebGL - Chapter 0.1: Introducing WebGL
 
-## Introduction
-The purpose of this repo is to provide those without a background in graphics programming to understand WebGL by way of a series of step by step articles. I personally struggled to find relevant articles and content on WebGL so I'm putting these chapters together to share what I have leared with others. I more than encourage contributions or corrections. I try to cite sources where possible!
+## The WebGL API
+Getting access to the API is a case of using JavaScript to get the *WebGL Context* which is called on a HTML canvas element. Browsers currently have two types of WebGL contexts:
+
+    canvas.getContext('webgl'); // OR
+    canvas.getContext('experimental-webgl');
+
+Different browsers use different arguments, but you can do away with this by testing for both as per [Modernizr](https://github.com/Modernizr/Modernizr/blob/master/feature-detects/webgl/extensions.js). The example (MIT License) is explained as such:
+
+    ```javascript
+    try {
+      canvas = createElement('canvas');
+      ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      exts = ctx.getSupportedExtensions();
+    }
+    catch (e) {
+      return;
+    }
+    ```
 
 ## What is WebGL?
 Put plain and simply, WebGL 1.0 is a piece of technology you can utilize in the browser to build up a scene of 2D or 3D graphics.
