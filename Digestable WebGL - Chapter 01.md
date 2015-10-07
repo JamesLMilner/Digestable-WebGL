@@ -27,6 +27,9 @@ The main necessity for WebGL is the desire to provide 2D and 3D graphics nativel
 Flash has been dying for a long time now along with Stage3D, with it's removal from Apple products leading the way on that. In order to graphics in the browser there was a necessity for something else,
 especially in the case of 3D.  Whilst HTML5 brought the canvas API which provides a nice native API for 2D rendering, WebGL is also capable of immersive 3D scenes directly in the browser.
 
+## Can I Use WebGL In This Browser?
+All modern [evergreen](https://www.techopedia.com/definition/31094/evergreen-browser) browsers (IE 11+) have some level of WebgGL support. Check [caniuse.com/webgl](http://www.caniuse.com/webgl) or alternatively go to this site: [get.webgl.org](http://get.webgl.org).
+
 ## Should I Be Using WebGL?
 There are many times when using WebGL might not be the best option. For example, if you are building a 2D simple game, and are not using any of the abstraction libraries for WebGL, the learning curve may be unnecessarily complex for such a use case. In this scenario [HTML canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) may be a better option. If you are wanting to build simple 2D games, check Microsoft's great [documentation on choosing the right API](https://msdn.microsoft.com/en-us/library/dn265058(v=vs.85)). If you want to build performant 2D or 3D experiences with lots of geometries and effects than WebGL is most likely the right choice for you.
 

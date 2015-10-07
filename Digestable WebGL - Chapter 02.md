@@ -3,21 +3,23 @@
 ## The WebGL API
 Getting access to the API is a case of using JavaScript to get the *WebGL Context* which is called on a HTML canvas element. Browsers currently have two types of WebGL contexts:
 
-    canvas.getContext('webgl'); // OR
-    canvas.getContext('experimental-webgl');
+```javascript
+canvas.getContext('webgl'); // OR
+canvas.getContext('experimental-webgl');
+```
 
 Different browsers use different arguments, but you can do away with this by testing for both as per [Modernizr](https://github.com/Modernizr/Modernizr/blob/master/feature-detects/webgl/extensions.js). The example (MIT License) is explained as such:
 
-    ```javascript
-    try {
-        var canvas = createElement('canvas');
-        var ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-        var exts = ctx.getSupportedExtensions();
-    }
-    catch (e) {
-        return;
-    }
-    ```
+```javascript
+try {
+    var canvas = createElement('canvas'); // Get the canvas element
+    var ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    var exts = ctx.getSupportedExtensions();
+}
+catch (e) {
+    return;
+}
+```
 
 
 ## What is WebGL?
