@@ -10,14 +10,15 @@ Different browsers use different arguments, but you can do away with this by tes
 
     ```javascript
     try {
-      canvas = createElement('canvas');
-      ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      exts = ctx.getSupportedExtensions();
+        var canvas = createElement('canvas');
+        var ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        var exts = ctx.getSupportedExtensions();
     }
     catch (e) {
-      return;
+        return;
     }
     ```
+
 
 ## What is WebGL?
 Put plain and simply, WebGL 1.0 is a piece of technology you can utilize in the browser to build up a scene of 2D or 3D graphics.
