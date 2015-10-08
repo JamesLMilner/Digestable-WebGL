@@ -18,7 +18,8 @@ over and over very quickly" - NVIDIA, 2009). How GPUs work is a little outside t
 We'll come on to shaders in more detail later on, so don't worry about
 them too much at the moment. Just know they are vital to working with WebGL and help us draw things to our screen.
 
-Shaders differ from another way of process graphics called 'Fixed Functions'. Fixed functions provide a well defined API for processing graphics through there various stages.
+Shaders differ from another way of process graphics called 'Fixed Functions'. Fixed functions provide a well defined API for processing graphics through there various stages of the processing pipeline.
+
 All you need to know is that Shaders are a more flexible and in some ways more powerful way of rendering than fixed functions, hence their deprecation in OpenGL 3.0 and WebGL 1.0.
 
 ## Why WebGL?

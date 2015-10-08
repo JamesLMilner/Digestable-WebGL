@@ -1,4 +1,4 @@
-# Digestable WebGL - Chapter 0.2: The WebGL API
+# Digestable WebGL - Chapter 0.2: Checking for WebGL Support
 
 ## Checking for WebGL Support
 Getting access to the API is a case of using JavaScript to get the *WebGL Context* which is called on a HTML canvas element. Browsers currently have two types of WebGL contexts:
@@ -53,13 +53,6 @@ Here you can see all we do is get the WebGL context and clear its color to be Re
 The easiest way to think of a buffer is an allocation in memory that stores some specific data that can be accessed by our WebGL program. In the case above we are storing our colors for clearing the canvas, but there are other built in buffers such as gl.DEPTH_BUFFER and gl.STENCIL_BUFFER but we'll come on those later.
 
 
-
-
-
-
-
-
-
 ## Credits and Sources
 
-1. Nvidia - [What’s the Difference Between a CPU and a GPU?]( http://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/)
+1. Mozilla Developer Network - [Using WebGL extensions]( https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions)
