@@ -2,32 +2,36 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Musical Maps</title>
+		<title>WebGL - Point</title>
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		<style>
 			body, html, #webgl-canvas {
 				width: 100%;
 				height: 100%;
+				padding: 0px;
+				margin: 0px;
 			}
 			body {
 				background-color: white;
 			}
 		</style>
-		<script id="shader-fs" type="x-shader/x-fragment">
-		    precision mediump float;
-
-		    void main(void) {
-		        gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0); // Green
-		    }
-		</script>
 
 		<script id="shader-vs" type="x-shader/x-vertex">
 		    attribute vec3 aVertexPosition;
 
 		    void main(void) {
 		        gl_Position = vec4(0.5, 0.5, 0, 1.0);
+				gl_PointSize = 5.0;
 		    }
 		</script>
+		<script id="shader-fs" type="x-shader/x-fragment">
+			precision mediump float;
+
+			void main(void) {
+				gl_FragColor = vec4(0.0, 5.0, 5.0, 1.0); // Green
+			}
+		</script>
+
 	</head>
     <body>
 		<canvas id="webgl-canvas"></canvas>
@@ -45,11 +49,73 @@
 				//Set the color to clear the canvas too : Red, Green, Blue, Alpha
 				// gl.clearColor(1.0, 0.0, 0.0, 1.0); // Red
 				// gl.clearColor(0.0, 1.0, 0.0, 1.0); // Green
-				gl.clearColor(0.0, 0.0, 1.0, 0.3); // Transparent Blue
+				gl.clearColor(0.0, 0.0, 1.0, 1); // Transparent Blue
 				// Clear the canvas
 				gl.clear(gl.COLOR_BUFFER_BIT); //
+				initShaders(gl);
+				gl.drawArrays(gl.POINTS, 0, 1)
 
 			}
+
+			function getShader(gl, id) {
+
+				// Taken from Giles Thomas's tutorial:
+				// https://github.com/gpjt/webgl-lessons/blob/master/lesson01/index.html
+		        var shaderScript = document.getElementById(id);
+		        if (!shaderScript) {
+		            return null;
+		        }
+
+		        var str = "";
+		        var k = shaderScript.firstChild;
+		        while (k) {
+		            if (k.nodeType == 3) {
+		                str += k.textContent;
+		            }
+		            k = k.nextSibling;
+		        }
+
+		        var shader;
+		        if (shaderScript.type == "x-shader/x-fragment") {
+		            shader = gl.createShader(gl.FRAGMENT_SHADER);
+		        } else if (shaderScript.type == "x-shader/x-vertex") {
+		            shader = gl.createShader(gl.VERTEX_SHADER);
+		        } else {
+		            return null;
+		        }
+
+		        gl.shaderSource(shader, str);
+		        gl.compileShader(shader);
+
+		        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+		            alert(gl.getShaderInfoLog(shader));
+		            return null;
+		        }
+
+		        return shader;
+		    }
+
+			function initShaders(gl) {
+				// Adapted from Giles Thomas's tutorial:
+				// https://github.com/gpjt/webgl-lessons/blob/master/lesson01/index.html
+				
+				var fragmentShader = getShader(gl, "shader-fs");
+				var vertexShader = getShader(gl, "shader-vs");
+
+				shaderProgram = gl.createProgram();
+				gl.attachShader(shaderProgram, vertexShader);
+				gl.attachShader(shaderProgram, fragmentShader);
+				gl.linkProgram(shaderProgram);
+
+				if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+					console.log("Could not initialise shaders");
+				}
+
+				gl.useProgram(shaderProgram);
+
+			}
+
+
 			startWebGL();
 
 	    </script>
